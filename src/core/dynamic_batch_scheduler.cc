@@ -157,6 +157,7 @@ DynamicBatchScheduler::~DynamicBatchScheduler()
 Status
 DynamicBatchScheduler::Enqueue(std::unique_ptr<InferenceRequest>& request)
 {
+<<<<<<< d5b7c2e65abef21eca29752349e1668b465b6c27
   // If queue start timestamp hasn't been set, queue timer starts at
   // the beginning of the queueing and scheduling process. Otherwise,
   // dynamic batcher is used as component of another batcher and should not
@@ -166,6 +167,7 @@ DynamicBatchScheduler::Enqueue(std::unique_ptr<InferenceRequest>& request)
     INFER_TRACE_ACTIVITY(
         request->Trace(), TRITONSERVER_TRACE_QUEUE_START,
         request->QueueStartNs());
+    request->TraceTensor();
   }
 
   // Record time at the beginning of the batcher queueing. In the case of
@@ -174,8 +176,6 @@ DynamicBatchScheduler::Enqueue(std::unique_ptr<InferenceRequest>& request)
   // batcher won't be needing this value and it can be safely reused by
   // the dynamic batcher.
   request->CaptureBatcherStartNs();
-
-  request->TraceTensor();
 
   std::unique_ptr<InferenceResponse> cached_response;
 

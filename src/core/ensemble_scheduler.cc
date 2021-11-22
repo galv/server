@@ -1240,6 +1240,8 @@ EnsembleScheduler::Enqueue(std::unique_ptr<InferenceRequest>& request)
   INFER_TRACE_ACTIVITY(
       request->Trace(), TRITONSERVER_TRACE_QUEUE_START,
       request->QueueStartNs());
+  request->TraceTensor();
+
   std::shared_ptr<EnsembleContext> context(new EnsembleContext(
       metric_reporter_.get(), stats_aggregator_, is_, info_.get(), request,
       stream_));
