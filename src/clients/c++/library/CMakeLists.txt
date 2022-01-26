@@ -315,7 +315,7 @@ if(${TRITON_ENABLE_HTTP})
   if (NOT WIN32)
      install(
          FILES
-         ${CMAKE_CURRENT_BINARY_DIR}/../../../../../curl/install/lib/libcurl.a
+         ${CMAKE_CURRENT_BINARY_DIR}/../../../../../curl/install/lib64/libcurl.a
          DESTINATION lib
      )
   else()
