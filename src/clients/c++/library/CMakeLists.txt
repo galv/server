@@ -153,7 +153,7 @@ if(${TRITON_ENABLE_GRPC})
          ${CMAKE_CURRENT_BINARY_DIR}/../../../../../grpc/lib/libgrpc.a
          ${CMAKE_CURRENT_BINARY_DIR}/../../../../../grpc/lib/libgrpc++.a
          ${CMAKE_CURRENT_BINARY_DIR}/../../../../../grpc/lib/libaddress_sorting.a
-         ${CMAKE_CURRENT_BINARY_DIR}/../../../../../protobuf/lib/libprotobuf.a
+         ${CMAKE_CURRENT_BINARY_DIR}/../../../../../protobuf/lib64/libprotobuf.a
          DESTINATION lib
      )
   else()
