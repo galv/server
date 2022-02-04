@@ -89,6 +89,15 @@ CurlGlobal::~CurlGlobal()
   curl_global_cleanup();
 }
 
+class CurlGlobalDestroyer {
+public:
+    ~CurlGlobalDestroyer() {
+        delete &CurlGlobal::Get();
+    }
+};
+
+static CurlGlobalDestroyer curl_global_destroyer_;
+
 std::string
 GetQueryString(const Headers& query_params)
 {
