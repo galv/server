@@ -30,14 +30,8 @@ cmake_minimum_required (VERSION 3.18)
 # Protobuf
 #
 file(GLOB proto-srcs *.proto)
-if(${TRITON_ENABLE_GRPC})
-  protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${proto-srcs})
-  protobuf_generate_python(PROTO_PY ${proto-srcs})
-else()
-  set(PROTO_SRCS "")
-  set(PROTO_HDRS "")
-  set(PROTO_PY   "")
-endif()
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${proto-srcs})
+protobuf_generate_python(PROTO_PY ${proto-srcs})
 
 set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
 if(${TRITON_ENABLE_GRPC})
